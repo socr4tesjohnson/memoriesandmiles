@@ -1,0 +1,21 @@
+<Bar Background="Background.Light" ThemeContrast="ThemeContrast.Light">
+    <BarBrand>
+        <BarItem>
+            <BarLink Class="navbar-brand" To="">Memories and Miles</BarLink>
+        </BarItem>
+    </BarBrand>
+    <BarToggler Clicked="@ToggleBar" />
+    <BarMenu Visible="@barVisible">
+        <BarStart>
+            <BarItem><BarLink To="">Home</BarLink></BarItem>
+            <BarItem><BarLink To="questionnaire">Questionnaire</BarLink></BarItem>
+            <BarItem><BarLink To="contact">Contact</BarLink></BarItem>
+        </BarStart>
+    </BarMenu>
+</Bar>
+
+@code {
+    bool barVisible;
+
+    void ToggleBar() => barVisible = !barVisible;
+}

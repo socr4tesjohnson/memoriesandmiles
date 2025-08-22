@@ -1,0 +1,23 @@
+@inherits LayoutComponentBase
+
+<ThemeProvider Theme="theme">
+    <NavMenu />
+    <Container Class="mt-4">
+        @Body
+    </Container>
+</ThemeProvider>
+
+@code {
+    Theme theme = new()
+    {
+        ColorOptions = new()
+        {
+            Primary = "#6fa7c7",
+            Secondary = "#a3d2ca"
+        },
+        BackgroundOptions = new()
+        {
+            Body = "#f0f9ff"
+        }
+    };
+}
