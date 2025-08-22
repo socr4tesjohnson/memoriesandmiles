@@ -1,0 +1,87 @@
+@page "/questionnaire"
+
+<PageTitle>Trip Questionnaire</PageTitle>
+
+<h1>Find Your Next Adventure</h1>
+
+@if (result == null)
+{
+    <EditForm Model="model" OnValidSubmit="HandleSubmit">
+        <DataAnnotationsValidator />
+        <Field>
+            <FieldLabel>What kind of trip are you looking for?</FieldLabel>
+            <Select TValue="string" @bind-SelectedValue="model.TripKind" Placeholder="Select...">
+                <SelectItem Value="@("themepark")">Theme Park</SelectItem>
+                <SelectItem Value="@("cruise")">Cruise</SelectItem>
+            </Select>
+        </Field>
+        @if (model.TripKind == "themepark")
+        {
+            <Field>
+                <FieldLabel>Which destination interests you most?</FieldLabel>
+                <Select TValue="string" @bind-SelectedValue="model.ThemePark" Placeholder="Select...">
+                    <SelectItem Value="@("DisneyWorld")">Walt Disney World</SelectItem>
+                    <SelectItem Value="@("Disneyland")">Disneyland</SelectItem>
+                    <SelectItem Value="@("Universal")">Universal Studios</SelectItem>
+                </Select>
+            </Field>
+        }
+        else if (model.TripKind == "cruise")
+        {
+            <Field>
+                <FieldLabel>Which cruise line sounds best?</FieldLabel>
+                <Select TValue="string" @bind-SelectedValue="model.CruiseLine" Placeholder="Select...">
+                    <SelectItem Value="@("DisneyCruise")">Disney Cruise Line</SelectItem>
+                    <SelectItem Value="@("OtherCruise")">Other Cruise Lines</SelectItem>
+                </Select>
+            </Field>
+        }
+        <Button Color="Color.Primary" Type="ButtonType.Submit">Get Recommendation</Button>
+    </EditForm>
+}
+else
+{
+    <p>We recommend: <strong>@result</strong></p>
+    <Button Color="Color.Secondary" @onclick="Reset">Start Over</Button>
+}
+
+@code {
+    private QuestionnaireModel model = new();
+    private string? result;
+
+    private void HandleSubmit()
+    {
+        if (model.TripKind == "themepark")
+        {
+            result = model.ThemePark switch
+            {
+                "DisneyWorld" => "Walt Disney World in Florida",
+                "Disneyland" => "Disneyland Resort in California",
+                "Universal" => "Universal Studios in Orlando",
+                _ => "a theme park adventure"
+            };
+        }
+        else if (model.TripKind == "cruise")
+        {
+            result = model.CruiseLine switch
+            {
+                "DisneyCruise" => "Disney Cruise Line",
+                "OtherCruise" => "another major cruise line such as Royal Caribbean or Carnival",
+                _ => "a cruise vacation"
+            };
+        }
+    }
+
+    private void Reset()
+    {
+        model = new();
+        result = null;
+    }
+
+    private class QuestionnaireModel
+    {
+        public string? TripKind { get; set; }
+        public string? ThemePark { get; set; }
+        public string? CruiseLine { get; set; }
+    }
+}
