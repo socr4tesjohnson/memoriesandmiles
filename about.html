@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Contact Laura loves to vacay to start planning your dream vacation - Disney, Universal, or cruise adventures.">
-    <title>Contact Us - Laura loves to vacay</title>
+    <meta name="description" content="Meet Laura, your dedicated travel advisor specializing in Disney, Universal, and cruise vacations.">
+    <title>About Me - Laura loves to vacay</title>
     <base href="/memoriesandmiles/">
 
     <!-- Preconnect for performance -->
@@ -35,66 +35,50 @@
             </button>
             <ul class="nav-menu">
                 <li><a href="./" class="nav-link">Welcome Aboard</a></li>
-                <li><a href="about.html" class="nav-link">About Me</a></li>
+                <li><a href="about.html" class="nav-link active">About Me</a></li>
                 <li><a href="questionnaire.html" class="nav-link">Dream Destinations</a></li>
                 <li><a href="quote.html" class="nav-link">Plan My Trip</a></li>
-                <li><a href="contact.html" class="nav-link active">Let's Chat</a></li>
+                <li><a href="contact.html" class="nav-link">Let's Chat</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <main class="contact-page">
+    <main class="about-page">
         <div class="container container-small">
-            <h1 class="page-title">Let's Plan Your Dream Vacation</h1>
-            <p class="page-subtitle">Have questions or ready to start planning? Send me a message!</p>
+            <h1 class="page-title">About Me</h1>
+            <p class="page-subtitle">Your dedicated travel advisor, turning vacation dreams into unforgettable memories</p>
 
-            <!-- Contact Card -->
-            <div class="card contact-card">
-                <form id="contact-form" class="contact-form" novalidate>
-                    <div class="form-group">
-                        <label for="name" class="form-label">Name *</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            class="form-input"
-                            required
-                            placeholder="Your name"
-                        >
-                        <span class="form-error" data-error="name"></span>
+            <!-- About Card -->
+            <div class="card about-card">
+                <div class="about-content">
+                    <div class="profile-image-container">
+                        <img src="images/Profile.jpg" alt="Laura - Travel Advisor" class="profile-image">
                     </div>
-
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email *</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            class="form-input"
-                            required
-                            placeholder="your.email@example.com"
-                        >
-                        <span class="form-error" data-error="email"></span>
+                    
+                    <div class="about-text">
+                        <h2>Hi, I'm Laura!</h2>
+                        
+                        <p>Welcome to Laura loves to vacay! I'm passionate about helping families and individuals create magical vacation experiences that they'll cherish for a lifetime.</p>
+                        
+                        <p>As a dedicated travel advisor, I specialize in Disney vacations, Universal adventures, and cruise experiences. Whether you're dreaming of exploring the magic of Walt Disney World, experiencing the thrills of Universal Studios, or sailing away on a luxurious cruise, I'm here to make your vacation planning stress-free and enjoyable.</p>
+                        
+                        <h3>Why Work With Me?</h3>
+                        
+                        <p>Travel planning should be exciting, not overwhelming. With my expertise and personalized service, I handle all the details so you can focus on the excitement of your upcoming adventure. From finding the perfect accommodations to booking dining reservations and planning your daily itinerary, I'm with you every step of the way.</p>
+                        
+                        <p>I stay up-to-date with the latest travel trends, insider tips, and exclusive offers to ensure you get the best value and experience possible. My goal is simple: to help you create memories that will last a lifetime.</p>
+                        
+                        <h3>Let's Plan Your Next Adventure!</h3>
+                        
+                        <p>Ready to start planning your dream vacation? Whether it's your first Disney trip or you're a seasoned traveler looking for something new, I'd love to help make your vacation dreams come true.</p>
+                        
+                        <div class="about-cta">
+                            <a href="quote.html" class="btn btn-primary btn-large">Get Your Free Quote</a>
+                            <a href="contact.html" class="btn btn-secondary btn-large">Contact Me</a>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="message" class="form-label">Message *</label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            class="form-textarea"
-                            rows="6"
-                            required
-                            placeholder="Tell us about your dream vacation..."
-                        ></textarea>
-                        <span class="form-error" data-error="message"></span>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary btn-large">
-                        Send Email
-                    </button>
-                </form>
+                </div>
             </div>
         </div>
     </main>
@@ -118,6 +102,5 @@
 
     <!-- JavaScript -->
     <script type="module" src="js/nav.js"></script>
-    <script type="module" src="js/contact.js"></script>
 </body>
 </html>
