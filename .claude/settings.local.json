@@ -15,7 +15,12 @@
       "Bash(identify:*)",
       "Bash(convert:*)",
       "Bash(ls:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nComplete site redesign: Blazor to static HTML with professional aesthetic\n\n- Convert from Blazor WebAssembly to lightweight static HTML/CSS/JavaScript\n- Rebrand from \"Memories and Miles\" to \"Laura loves to vacay\"\n- Remove all emoji icons, replace with professional CSS accent lines\n- Add local stock photos for all destinations \\(Disney, Universal, cruises, Europe, tours\\)\n- Split cruise types into Royal Caribbean and Disney Cruise Line as separate options\n- Implement multiple date preferences \\(3 ranked choices\\) across all trip types\n- Add real customer testimonials from The Warrens and The English Family\n- Remove all pricing information from destination cards\n- Add comprehensive mobile responsive design \\(768px breakpoint\\)\n- Update GitHub Actions workflow for static file deployment\n- Reduce page size from 2MB+ to ~50KB, improve load times significantly\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git config:*)",
+      "Bash(git push:*)",
+      "Bash(gh run list:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
