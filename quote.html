@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get a personalized quote for your Disney vacation or Royal Caribbean cruise - free planning services with expert guidance.">
+    <title>Get a Quote - Laura loves to vacay</title>
+    <base href="/">
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Work+Sans:wght@400;500;600&family=Allura&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-logo">
+                    Laura loves to vacay
+                </a>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Welcome Aboard</a></li>
+                <li><a href="questionnaire.html" class="nav-link">Dream Destinations</a></li>
+                <li><a href="quote.html" class="nav-link active">Plan My Trip</a></li>
+                <li><a href="contact.html" class="nav-link">Let's Chat</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="quote-page">
+        <div class="container container-small">
+            <h1 class="page-title">Plan Your Dream Vacation</h1>
+            <p class="page-subtitle">Tell me about your perfect trip and I'll create a personalized quote!</p>
+
+            <!-- Progress Bar -->
+            <div class="wizard-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-steps">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Trip Type</div>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Details</div>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Preferences</div>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <div class="step-number">4</div>
+                        <div class="step-label">Contact</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wizard Form -->
+            <div class="card wizard-card">
+                <form id="quote-wizard" class="wizard-form">
+
+                    <!-- Step 1: Trip Type Selection -->
+                    <div class="wizard-step active" data-step="1">
+                        <h2>What type of vacation are you planning?</h2>
+                        <p class="step-description">Choose your dream destination</p>
+
+                        <div class="trip-type-grid">
+                            <label class="trip-type-card">
+                                <input type="radio" name="tripType" value="disney" required>
+                                <div class="card-content">
+                                    <h3>Disney Vacation</h3>
+                                    <p>Walt Disney World or Disneyland Resort</p>
+                                </div>
+                            </label>
+
+                            <label class="trip-type-card">
+                                <input type="radio" name="tripType" value="royal-caribbean" required>
+                                <div class="card-content">
+                                    <h3>Royal Caribbean</h3>
+                                    <p>Ocean cruises & Caribbean adventures</p>
+                                </div>
+                            </label>
+
+                            <label class="trip-type-card">
+                                <input type="radio" name="tripType" value="disney-cruise" required>
+                                <div class="card-content">
+                                    <h3>Disney Cruise Line</h3>
+                                    <p>Magical cruises for families</p>
+                                </div>
+                            </label>
+
+                            <label class="trip-type-card">
+                                <input type="radio" name="tripType" value="universal" required>
+                                <div class="card-content">
+                                    <h3>Universal Orlando</h3>
+                                    <p>Wizarding World & Epic Universe</p>
+                                </div>
+                            </label>
+
+                            <label class="trip-type-card">
+                                <input type="radio" name="tripType" value="europe" required>
+                                <div class="card-content">
+                                    <h3>European Getaway</h3>
+                                    <p>Italy, France, UK & More</p>
+                                </div>
+                            </label>
+
+                            <label class="trip-type-card">
+                                <input type="radio" name="tripType" value="river" required>
+                                <div class="card-content">
+                                    <h3>River Cruise</h3>
+                                    <p>Viking & AmaWaterways</p>
+                                </div>
+                            </label>
+
+                            <label class="trip-type-card">
+                                <input type="radio" name="tripType" value="other" required>
+                                <div class="card-content">
+                                    <h3>Other Destination</h3>
+                                    <p>Tell me about your dream trip</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Disney Details -->
+                    <div class="wizard-step" data-step="2" data-trip-type="disney">
+                        <h2>Disney Vacation Details</h2>
+                        <p class="step-description">Help me plan your magical getaway</p>
+
+                        <div class="form-group">
+                            <label for="disney-destination" class="form-label">Which Disney destination?</label>
+                            <select id="disney-destination" name="disneyDestination" class="form-select">
+                                <option value="">Select destination...</option>
+                                <option value="wdw">Walt Disney World (Florida)</option>
+                                <option value="disneyland">Disneyland Resort (California)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Travel Date Preferences (list up to 3 options, best to least preferred)</label>
+                            <div class="date-options-group">
+                                <div class="date-option">
+                                    <label for="disney-date1" class="date-option-label">1st Choice (Best):</label>
+                                    <input type="date" id="disney-date1" name="disneyDate1" class="form-input">
+                                </div>
+                                <div class="date-option">
+                                    <label for="disney-date2" class="date-option-label">2nd Choice:</label>
+                                    <input type="date" id="disney-date2" name="disneyDate2" class="form-input">
+                                </div>
+                                <div class="date-option">
+                                    <label for="disney-date3" class="date-option-label">3rd Choice:</label>
+                                    <input type="date" id="disney-date3" name="disneyDate3" class="form-input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="disney-duration" class="form-label">How many nights?</label>
+                            <input type="number" id="disney-duration" name="disneyDuration" class="form-input" placeholder="e.g., 5" min="1" max="30">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="disney-adults" class="form-label">Number of Adults (18+)</label>
+                                <input type="number" id="disney-adults" name="disneyAdults" class="form-input" min="1" max="20" value="2">
+                            </div>
+                            <div class="form-group">
+                                <label for="disney-children" class="form-label">Number of Children (Under 18)</label>
+                                <input type="number" id="disney-children" name="disneyChildren" class="form-input" min="0" max="20" value="0">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="disney-ages" class="form-label">Ages of Children (if applicable)</label>
+                            <input type="text" id="disney-ages" name="disneyAges" class="form-input" placeholder="e.g., 5, 8, 12">
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Royal Caribbean Details -->
+                    <div class="wizard-step" data-step="2" data-trip-type="royal-caribbean">
+                        <h2>Royal Caribbean Cruise Details</h2>
+                        <p class="step-description">Let me find your perfect cruise</p>
+
+                        <div class="form-group">
+                            <label for="cruise-destination" class="form-label">Preferred Cruise Region</label>
+                            <select id="cruise-destination" name="cruiseDestination" class="form-select">
+                                <option value="">Select region...</option>
+                                <option value="caribbean">Eastern Caribbean</option>
+                                <option value="western-caribbean">Western Caribbean</option>
+                                <option value="southern-caribbean">Southern Caribbean</option>
+                                <option value="bahamas">Bahamas</option>
+                                <option value="mexico">Mexico</option>
+                                <option value="other">Other/Not Sure</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cruise-length" class="form-label">Cruise Length</label>
+                            <select id="cruise-length" name="cruiseLength" class="form-select">
+                                <option value="">Select length...</option>
+                                <option value="3-4">3-4 Nights</option>
+                                <option value="5-7">5-7 Nights</option>
+                                <option value="8-10">8-10 Nights</option>
+                                <option value="11plus">11+ Nights</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Sail Date Preferences (list up to 3 options, best to least preferred)</label>
+                            <div class="date-options-group">
+                                <div class="date-option">
+                                    <label for="cruise-date1" class="date-option-label">1st Choice (Best):</label>
+                                    <input type="date" id="cruise-date1" name="cruiseDate1" class="form-input">
+                                </div>
+                                <div class="date-option">
+                                    <label for="cruise-date2" class="date-option-label">2nd Choice:</label>
+                                    <input type="date" id="cruise-date2" name="cruiseDate2" class="form-input">
+                                </div>
+                                <div class="date-option">
+                                    <label for="cruise-date3" class="date-option-label">3rd Choice:</label>
+                                    <input type="date" id="cruise-date3" name="cruiseDate3" class="form-input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cruise-adults" class="form-label">Number of Adults (18+)</label>
+                                <input type="number" id="cruise-adults" name="cruiseAdults" class="form-input" min="1" max="20" value="2">
+                            </div>
+                            <div class="form-group">
+                                <label for="cruise-children" class="form-label">Number of Children (Under 18)</label>
+                                <input type="number" id="cruise-children" name="cruiseChildren" class="form-input" min="0" max="20" value="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Disney Preferences -->
+                    <div class="wizard-step" data-step="3" data-trip-type="disney">
+                        <h2>Disney Preferences</h2>
+                        <p class="step-description">Customize your experience</p>
+
+                        <div class="form-group">
+                            <label for="disney-resort" class="form-label">Resort Preference</label>
+                            <select id="disney-resort" name="disneyResort" class="form-select">
+                                <option value="">Select preference...</option>
+                                <option value="value">Value Resort (Budget-friendly)</option>
+                                <option value="moderate">Moderate Resort (Mid-range)</option>
+                                <option value="deluxe">Deluxe Resort (Premium)</option>
+                                <option value="villa">Deluxe Villa (Spacious suites)</option>
+                                <option value="not-sure">Not Sure - Need Advice</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="disney-tickets" class="form-label">Park Tickets Needed?</label>
+                            <select id="disney-tickets" name="disneyTickets" class="form-select">
+                                <option value="">Select option...</option>
+                                <option value="yes">Yes, include park tickets</option>
+                                <option value="no">No, just resort booking</option>
+                                <option value="not-sure">Not sure yet</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="disney-dining" class="form-label">Dining Plan Interest</label>
+                            <select id="disney-dining" name="disneyDining" class="form-select">
+                                <option value="">Select option...</option>
+                                <option value="quick-service">Quick Service Dining Plan</option>
+                                <option value="standard">Standard Dining Plan</option>
+                                <option value="deluxe">Deluxe Dining Plan</option>
+                                <option value="no-plan">No Dining Plan</option>
+                                <option value="not-sure">Not sure - Need Advice</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="disney-special" class="form-label">Special Occasions or Requests</label>
+                            <textarea id="disney-special" name="disneySpecial" class="form-textarea" rows="3" placeholder="Birthday, anniversary, first visit, accessibility needs, etc."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="disney-budget" class="form-label">Budget Range (Optional)</label>
+                            <select id="disney-budget" name="disneyBudget" class="form-select">
+                                <option value="">Prefer not to say</option>
+                                <option value="under-3000">Under $3,000</option>
+                                <option value="3000-5000">$3,000 - $5,000</option>
+                                <option value="5000-7500">$5,000 - $7,500</option>
+                                <option value="7500-10000">$7,500 - $10,000</option>
+                                <option value="over-10000">Over $10,000</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Disney Cruise Details -->
+                    <div class="wizard-step" data-step="2" data-trip-type="disney-cruise">
+                        <h2>Disney Cruise Line Details</h2>
+                        <p class="step-description">Let me find your perfect Disney cruise</p>
+
+                        <div class="form-group">
+                            <label for="disney-cruise-destination" class="form-label">Preferred Cruise Region</label>
+                            <select id="disney-cruise-destination" name="disneyCruiseDestination" class="form-select">
+                                <option value="">Select region...</option>
+                                <option value="caribbean">Caribbean</option>
+                                <option value="bahamas">Bahamas</option>
+                                <option value="alaska">Alaska</option>
+                                <option value="europe">European</option>
+                                <option value="other">Other/Not Sure</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="disney-cruise-length" class="form-label">Cruise Length</label>
+                            <select id="disney-cruise-length" name="disneyCruiseLength" class="form-select">
+                                <option value="">Select length...</option>
+                                <option value="3-4">3-4 Nights</option>
+                                <option value="5-7">5-7 Nights</option>
+                                <option value="8-10">8-10 Nights</option>
+                                <option value="11plus">11+ Nights</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Sail Date Preferences (list up to 3 options, best to least preferred)</label>
+                            <div class="date-options-group">
+                                <div class="date-option">
+                                    <label for="disney-cruise-date1" class="date-option-label">1st Choice (Best):</label>
+                                    <input type="date" id="disney-cruise-date1" name="disneyCruiseDate1" class="form-input">
+                                </div>
+                                <div class="date-option">
+                                    <label for="disney-cruise-date2" class="date-option-label">2nd Choice:</label>
+                                    <input type="date" id="disney-cruise-date2" name="disneyCruiseDate2" class="form-input">
+                                </div>
+                                <div class="date-option">
+                                    <label for="disney-cruise-date3" class="date-option-label">3rd Choice:</label>
+                                    <input type="date" id="disney-cruise-date3" name="disneyCruiseDate3" class="form-input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="disney-cruise-adults" class="form-label">Number of Adults (18+)</label>
+                                <input type="number" id="disney-cruise-adults" name="disneyCruiseAdults" class="form-input" min="1" max="20" value="2">
+                            </div>
+                            <div class="form-group">
+                                <label for="disney-cruise-children" class="form-label">Number of Children (Under 18)</label>
+                                <input type="number" id="disney-cruise-children" name="disneyCruiseChildren" class="form-input" min="0" max="20" value="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Royal Caribbean Preferences -->
+                    <div class="wizard-step" data-step="3" data-trip-type="royal-caribbean">
+                        <h2>Royal Caribbean Preferences</h2>
+                        <p class="step-description">Customize your cruise experience</p>
+
+                        <div class="form-group">
+                            <label for="cruise-cabin" class="form-label">Cabin Preference</label>
+                            <select id="cruise-cabin" name="cruiseCabin" class="form-select">
+                                <option value="">Select preference...</option>
+                                <option value="interior">Interior (Budget-friendly)</option>
+                                <option value="oceanview">Ocean View</option>
+                                <option value="balcony">Balcony</option>
+                                <option value="suite">Suite</option>
+                                <option value="not-sure">Not Sure - Need Advice</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cruise-interests" class="form-label">What interests you most?</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="cruiseInterests" value="beaches">
+                                    Beach days & relaxation
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="cruiseInterests" value="excursions">
+                                    Shore excursions & adventures
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="cruiseInterests" value="dining">
+                                    Specialty dining & culinary experiences
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="cruiseInterests" value="entertainment">
+                                    Onboard entertainment & shows
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="cruiseInterests" value="spa">
+                                    Spa & wellness
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cruise-special" class="form-label">Special Occasions or Requests</label>
+                            <textarea id="cruise-special" name="cruiseSpecial" class="form-textarea" rows="3" placeholder="Anniversary, honeymoon, special dietary needs, accessibility requirements, etc."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cruise-budget" class="form-label">Budget Range Per Person (Optional)</label>
+                            <select id="cruise-budget" name="cruiseBudget" class="form-select">
+                                <option value="">Prefer not to say</option>
+                                <option value="under-1000">Under $1,000</option>
+                                <option value="1000-1500">$1,000 - $1,500</option>
+                                <option value="1500-2500">$1,500 - $2,500</option>
+                                <option value="2500-4000">$2,500 - $4,000</option>
+                                <option value="over-4000">Over $4,000</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Disney Cruise Preferences -->
+                    <div class="wizard-step" data-step="3" data-trip-type="disney-cruise">
+                        <h2>Disney Cruise Preferences</h2>
+                        <p class="step-description">Customize your cruise experience</p>
+
+                        <div class="form-group">
+                            <label for="disney-cruise-cabin" class="form-label">Cabin Preference</label>
+                            <select id="disney-cruise-cabin" name="disneyCruiseCabin" class="form-select">
+                                <option value="">Select preference...</option>
+                                <option value="inside">Inside Stateroom (Budget-friendly)</option>
+                                <option value="oceanview">Ocean View</option>
+                                <option value="verandah">Verandah (Balcony)</option>
+                                <option value="concierge">Concierge Level</option>
+                                <option value="not-sure">Not Sure - Need Advice</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="disney-cruise-interests" class="form-label">What interests you most?</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="disneyCruiseInterests" value="character">
+                                    Character experiences & meet-and-greets
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="disneyCruiseInterests" value="excursions">
+                                    Shore excursions & adventures
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="disneyCruiseInterests" value="dining">
+                                    Rotational dining & specialty restaurants
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="disneyCruiseInterests" value="entertainment">
+                                    Broadway-style shows & entertainment
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="disneyCruiseInterests" value="kids">
+                                    Kids' clubs & youth activities
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="disney-cruise-special" class="form-label">Special Occasions or Requests</label>
+                            <textarea id="disney-cruise-special" name="disneyCruiseSpecial" class="form-textarea" rows="3" placeholder="Anniversary, honeymoon, special dietary needs, accessibility requirements, etc."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="disney-cruise-budget" class="form-label">Budget Range Per Person (Optional)</label>
+                            <select id="disney-cruise-budget" name="disneyCruiseBudget" class="form-select">
+                                <option value="">Prefer not to say</option>
+                                <option value="under-1500">Under $1,500</option>
+                                <option value="1500-2500">$1,500 - $2,500</option>
+                                <option value="2500-4000">$2,500 - $4,000</option>
+                                <option value="4000-6000">$4,000 - $6,000</option>
+                                <option value="over-6000">Over $6,000</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: European Details -->
+                    <div class="wizard-step" data-step="2" data-trip-type="europe">
+                        <h2>European Getaway Details</h2>
+                        <p class="step-description">Tell me about your European adventure</p>
+
+                        <div class="form-group">
+                            <label for="europe-countries" class="form-label">Which countries interest you?</label>
+                            <input type="text" id="europe-countries" name="europeCountries" class="form-input" placeholder="e.g., Italy, France, Spain">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Travel Date Preferences (list up to 3 options, best to least preferred)</label>
+                            <div class="date-options-group">
+                                <div class="date-option">
+                                    <label for="europe-date1" class="date-option-label">1st Choice (Best):</label>
+                                    <input type="date" id="europe-date1" name="europeDate1" class="form-input">
+                                </div>
+                                <div class="date-option">
+                                    <label for="europe-date2" class="date-option-label">2nd Choice:</label>
+                                    <input type="date" id="europe-date2" name="europeDate2" class="form-input">
+                                </div>
+                                <div class="date-option">
+                                    <label for="europe-date3" class="date-option-label">3rd Choice:</label>
+                                    <input type="date" id="europe-date3" name="europeDate3" class="form-input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="europe-duration" class="form-label">Trip Duration</label>
+                            <select id="europe-duration" name="europeDuration" class="form-select">
+                                <option value="">Select duration...</option>
+                                <option value="7-10">7-10 Days</option>
+                                <option value="10-14">10-14 Days</option>
+                                <option value="14-21">14-21 Days</option>
+                                <option value="21plus">21+ Days</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="europe-adults" class="form-label">Number of Adults (18+)</label>
+                                <input type="number" id="europe-adults" name="europeAdults" class="form-input" min="1" max="20" value="2">
+                            </div>
+                            <div class="form-group">
+                                <label for="europe-children" class="form-label">Number of Children (Under 18)</label>
+                                <input type="number" id="europe-children" name="europeChildren" class="form-input" min="0" max="20" value="0">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="europe-cities" class="form-label">Specific cities or regions you want to visit?</label>
+                            <textarea id="europe-cities" name="europeCities" class="form-textarea" rows="3" placeholder="e.g., Paris, Rome, Tuscany, London"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Universal Details -->
+                    <div class="wizard-step" data-step="2" data-trip-type="universal">
+                        <h2>Universal Orlando Details</h2>
+                        <p class="step-description">Plan your Universal adventure</p>
+
+                        <div class="form-group">
+                            <label class="form-label">Travel Date Preferences (list up to 3 options, best to least preferred)</label>
+                            <div class="date-options-group">
+                                <div class="date-option">
+                                    <label for="universal-date1" class="date-option-label">1st Choice (Best):</label>
+                                    <input type="date" id="universal-date1" name="universalDate1" class="form-input">
+                                </div>
+                                <div class="date-option">
+                                    <label for="universal-date2" class="date-option-label">2nd Choice:</label>
+                                    <input type="date" id="universal-date2" name="universalDate2" class="form-input">
+                                </div>
+                                <div class="date-option">
+                                    <label for="universal-date3" class="date-option-label">3rd Choice:</label>
+                                    <input type="date" id="universal-date3" name="universalDate3" class="form-input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="universal-duration" class="form-label">How many nights?</label>
+                            <input type="number" id="universal-duration" name="universalDuration" class="form-input" placeholder="e.g., 4" min="1" max="30">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="universal-adults" class="form-label">Number of Adults (18+)</label>
+                                <input type="number" id="universal-adults" name="universalAdults" class="form-input" min="1" max="20" value="2">
+                            </div>
+                            <div class="form-group">
+                                <label for="universal-children" class="form-label">Number of Children (Under 18)</label>
+                                <input type="number" id="universal-children" name="universalChildren" class="form-input" min="0" max="20" value="0">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="universal-ages" class="form-label">Ages of Children (if applicable)</label>
+                            <input type="text" id="universal-ages" name="universalAges" class="form-input" placeholder="e.g., 5, 8, 12">
+                        </div>
+                    </div>
+
+                    <!-- Step 2: River Cruise Details -->
+                    <div class="wizard-step" data-step="2" data-trip-type="river">
+                        <h2>River Cruise Details</h2>
+                        <p class="step-description">Find your perfect river cruise</p>
+
+                        <div class="form-group">
+                            <label for="river-region" class="form-label">Preferred Region</label>
+                            <select id="river-region" name="riverRegion" class="form-select">
+                                <option value="">Select region...</option>
+                                <option value="rhine">Rhine River</option>
+                                <option value="danube">Danube River</option>
+                                <option value="seine">Seine River (Paris)</option>
+                                <option value="douro">Douro River (Portugal)</option>
+                                <option value="rhone">Rhone River (France)</option>
+                                <option value="other">Other/Not Sure</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Sail Date Preferences (list up to 3 options, best to least preferred)</label>
+                            <div class="date-options-group">
+                                <div class="date-option">
+                                    <label for="river-date1" class="date-option-label">1st Choice (Best):</label>
+                                    <input type="date" id="river-date1" name="riverDate1" class="form-input">
+                                </div>
+                                <div class="date-option">
+                                    <label for="river-date2" class="date-option-label">2nd Choice:</label>
+                                    <input type="date" id="river-date2" name="riverDate2" class="form-input">
+                                </div>
+                                <div class="date-option">
+                                    <label for="river-date3" class="date-option-label">3rd Choice:</label>
+                                    <input type="date" id="river-date3" name="riverDate3" class="form-input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="river-adults" class="form-label">Number of Adults (18+)</label>
+                                <input type="number" id="river-adults" name="riverAdults" class="form-input" min="1" max="20" value="2">
+                            </div>
+                            <div class="form-group">
+                                <label for="river-children" class="form-label">Number of Children (Under 18)</label>
+                                <input type="number" id="river-children" name="riverChildren" class="form-input" min="0" max="20" value="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Other Destination Details -->
+                    <div class="wizard-step" data-step="2" data-trip-type="other">
+                        <h2>Tell Me About Your Dream Trip</h2>
+                        <p class="step-description">Share your travel vision</p>
+
+                        <div class="form-group">
+                            <label for="other-destination" class="form-label">Where do you want to go?</label>
+                            <input type="text" id="other-destination" name="otherDestination" class="form-input" placeholder="Country, region, or type of vacation">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Travel Date Preferences (list up to 3 options, best to least preferred)</label>
+                            <div class="date-options-group">
+                                <div class="date-option">
+                                    <label for="other-date1" class="date-option-label">1st Choice (Best):</label>
+                                    <input type="date" id="other-date1" name="otherDate1" class="form-input">
+                                </div>
+                                <div class="date-option">
+                                    <label for="other-date2" class="date-option-label">2nd Choice:</label>
+                                    <input type="date" id="other-date2" name="otherDate2" class="form-input">
+                                </div>
+                                <div class="date-option">
+                                    <label for="other-date3" class="date-option-label">3rd Choice:</label>
+                                    <input type="date" id="other-date3" name="otherDate3" class="form-input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="other-duration" class="form-label">Trip Duration</label>
+                            <input type="text" id="other-duration" name="otherDuration" class="form-input" placeholder="e.g., 1 week, 10 days">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="other-adults" class="form-label">Number of Adults (18+)</label>
+                                <input type="number" id="other-adults" name="otherAdults" class="form-input" min="1" max="20" value="2">
+                            </div>
+                            <div class="form-group">
+                                <label for="other-children" class="form-label">Number of Children (Under 18)</label>
+                                <input type="number" id="other-children" name="otherChildren" class="form-input" min="0" max="20" value="0">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="other-details" class="form-label">Tell me more about what you're looking for</label>
+                            <textarea id="other-details" name="otherDetails" class="form-textarea" rows="4" placeholder="What activities interest you? What's your travel style? Any must-see attractions?"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: European Preferences -->
+                    <div class="wizard-step" data-step="3" data-trip-type="europe">
+                        <h2>European Travel Preferences</h2>
+                        <p class="step-description">Customize your experience</p>
+
+                        <div class="form-group">
+                            <label for="europe-style" class="form-label">Travel Style</label>
+                            <select id="europe-style" name="europeStyle" class="form-select">
+                                <option value="">Select preference...</option>
+                                <option value="fast-paced">Fast-paced (see lots of places)</option>
+                                <option value="moderate">Moderate pace (balanced)</option>
+                                <option value="relaxed">Relaxed (immerse in fewer places)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="europe-interests" class="form-label">What interests you most?</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="europeInterests" value="history">
+                                    History & Museums
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="europeInterests" value="food">
+                                    Food & Wine
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="europeInterests" value="art">
+                                    Art & Architecture
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="europeInterests" value="nature">
+                                    Nature & Scenery
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="europeInterests" value="shopping">
+                                    Shopping & Fashion
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="europe-accommodation" class="form-label">Accommodation Preference</label>
+                            <select id="europe-accommodation" name="europeAccommodation" class="form-select">
+                                <option value="">Select preference...</option>
+                                <option value="budget">Budget-friendly hotels</option>
+                                <option value="mid-range">Mid-range hotels (3-4 star)</option>
+                                <option value="luxury">Luxury hotels (4-5 star)</option>
+                                <option value="boutique">Boutique/Unique properties</option>
+                                <option value="not-sure">Not sure - Need Advice</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="europe-special" class="form-label">Special Occasions or Requests</label>
+                            <textarea id="europe-special" name="europeSpecial" class="form-textarea" rows="3" placeholder="Anniversary, honeymoon, special dietary needs, accessibility requirements, etc."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="europe-budget" class="form-label">Budget Range Per Person (Optional)</label>
+                            <select id="europe-budget" name="europeBudget" class="form-select">
+                                <option value="">Prefer not to say</option>
+                                <option value="under-2000">Under $2,000</option>
+                                <option value="2000-3500">$2,000 - $3,500</option>
+                                <option value="3500-5000">$3,500 - $5,000</option>
+                                <option value="5000-7500">$5,000 - $7,500</option>
+                                <option value="over-7500">Over $7,500</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Universal Preferences -->
+                    <div class="wizard-step" data-step="3" data-trip-type="universal">
+                        <h2>Universal Preferences</h2>
+                        <p class="step-description">Customize your experience</p>
+
+                        <div class="form-group">
+                            <label for="universal-hotel" class="form-label">Hotel Preference</label>
+                            <select id="universal-hotel" name="universalHotel" class="form-select">
+                                <option value="">Select preference...</option>
+                                <option value="value">Value Hotels (Off-site)</option>
+                                <option value="prime">Prime Value (On-site)</option>
+                                <option value="preferred">Preferred (On-site)</option>
+                                <option value="premier">Premier (On-site with Express Pass)</option>
+                                <option value="not-sure">Not Sure - Need Advice</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="universal-tickets" class="form-label">Park Tickets Needed?</label>
+                            <select id="universal-tickets" name="universalTickets" class="form-select">
+                                <option value="">Select option...</option>
+                                <option value="yes">Yes, include park tickets</option>
+                                <option value="no">No, just hotel booking</option>
+                                <option value="not-sure">Not sure yet</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="universal-special" class="form-label">Special Occasions or Requests</label>
+                            <textarea id="universal-special" name="universalSpecial" class="form-textarea" rows="3" placeholder="Birthday, anniversary, first visit, accessibility needs, etc."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="universal-budget" class="form-label">Budget Range (Optional)</label>
+                            <select id="universal-budget" name="universalBudget" class="form-select">
+                                <option value="">Prefer not to say</option>
+                                <option value="under-2000">Under $2,000</option>
+                                <option value="2000-3500">$2,000 - $3,500</option>
+                                <option value="3500-5000">$3,500 - $5,000</option>
+                                <option value="5000-7500">$5,000 - $7,500</option>
+                                <option value="over-7500">Over $7,500</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: River Cruise Preferences -->
+                    <div class="wizard-step" data-step="3" data-trip-type="river">
+                        <h2>River Cruise Preferences</h2>
+                        <p class="step-description">Customize your cruise experience</p>
+
+                        <div class="form-group">
+                            <label for="river-cabin" class="form-label">Cabin Preference</label>
+                            <select id="river-cabin" name="riverCabin" class="form-select">
+                                <option value="">Select preference...</option>
+                                <option value="standard">Standard Cabin</option>
+                                <option value="balcony">Balcony Cabin</option>
+                                <option value="suite">Suite</option>
+                                <option value="not-sure">Not Sure - Need Advice</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="river-special" class="form-label">Special Occasions or Requests</label>
+                            <textarea id="river-special" name="riverSpecial" class="form-textarea" rows="3" placeholder="Anniversary, honeymoon, special dietary needs, accessibility requirements, etc."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="river-budget" class="form-label">Budget Range Per Person (Optional)</label>
+                            <select id="river-budget" name="riverBudget" class="form-select">
+                                <option value="">Prefer not to say</option>
+                                <option value="under-2500">Under $2,500</option>
+                                <option value="2500-4000">$2,500 - $4,000</option>
+                                <option value="4000-6000">$4,000 - $6,000</option>
+                                <option value="6000-8000">$6,000 - $8,000</option>
+                                <option value="over-8000">Over $8,000</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Other Destination Preferences -->
+                    <div class="wizard-step" data-step="3" data-trip-type="other">
+                        <h2>Travel Preferences</h2>
+                        <p class="step-description">Help me understand your needs</p>
+
+                        <div class="form-group">
+                            <label for="other-accommodation" class="form-label">Accommodation Preference</label>
+                            <select id="other-accommodation" name="otherAccommodation" class="form-select">
+                                <option value="">Select preference...</option>
+                                <option value="budget">Budget-friendly</option>
+                                <option value="mid-range">Mid-range (3-4 star)</option>
+                                <option value="luxury">Luxury (4-5 star)</option>
+                                <option value="not-sure">Not sure - Need Advice</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="other-special" class="form-label">Special Occasions or Requests</label>
+                            <textarea id="other-special" name="otherSpecial" class="form-textarea" rows="3" placeholder="Anniversary, honeymoon, special needs, preferences, etc."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="other-budget" class="form-label">Budget Range (Optional)</label>
+                            <input type="text" id="other-budget" name="otherBudget" class="form-input" placeholder="e.g., $3,000 - $5,000 total">
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Contact Information -->
+                    <div class="wizard-step" data-step="4">
+                        <h2>Contact Information</h2>
+                        <p class="step-description">How can I reach you with your personalized quote?</p>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contact-firstname" class="form-label">First Name *</label>
+                                <input type="text" id="contact-firstname" name="firstName" class="form-input" required>
+                                <span class="form-error" data-error="firstName"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-lastname" class="form-label">Last Name *</label>
+                                <input type="text" id="contact-lastname" name="lastName" class="form-input" required>
+                                <span class="form-error" data-error="lastName"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-email" class="form-label">Email Address *</label>
+                            <input type="email" id="contact-email" name="email" class="form-input" required>
+                            <span class="form-error" data-error="email"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="contact-phone" name="phone" class="form-input" placeholder="(555) 123-4567">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-hear" class="form-label">How did you hear about us?</label>
+                            <select id="contact-hear" name="hearAbout" class="form-select">
+                                <option value="">Select option...</option>
+                                <option value="google">Google Search</option>
+                                <option value="facebook">Facebook</option>
+                                <option value="instagram">Instagram</option>
+                                <option value="friend">Friend/Family Referral</option>
+                                <option value="previous">Previous Client</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contact-notes" class="form-label">Additional Notes or Questions</label>
+                            <textarea id="contact-notes" name="additionalNotes" class="form-textarea" rows="4" placeholder="Any other details we should know..."></textarea>
+                        </div>
+
+                        <div class="form-notice">
+                            <p>✨ <strong>My planning services are typically commission-based.</strong> I earn a commission from travel suppliers like Disney and Royal Caribbean. Some trips may include a planning fee - I'll discuss all costs upfront.</p>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="wizard-navigation">
+                        <button type="button" class="btn btn-secondary" id="prev-btn" style="display: none;">
+                            ← Previous
+                        </button>
+                        <button type="button" class="btn btn-primary" id="next-btn">
+                            Next →
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="submit-btn" style="display: none;">
+                            Request Quote
+                        </button>
+                    </div>
+
+                </form>
+
+                <!-- Success Message -->
+                <div id="success-message" class="success-message hidden">
+                    <div class="success-icon">✅</div>
+                    <h2>Quote Request Sent!</h2>
+                    <p>Thank you for choosing Laura loves to vacay! I'll review your information and get back to you within 24 hours with a personalized quote.</p>
+                    <p>I'll contact you at <strong id="confirm-email"></strong></p>
+                    <a href="index.html" class="btn btn-primary">Return Home</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/17gNKFWTPG/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/lauralovestovacay?igsh=NHVwbmZhZnVmbjg5" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                </div>
+                <p>&copy; 2026 Laura loves to vacay. Making vacation dreams come true.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script type="module" src="js/nav.js"></script>
+    <script type="module" src="js/quote.js"></script>
+</body>
+</html>

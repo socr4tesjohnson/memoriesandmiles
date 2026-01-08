@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(tree:*)",
+      "Bash(python -m http.server:*)",
+      "WebFetch(domain:www.themagicalmommy.net)",
+      "Bash(claude mcp add --transport stdio playwright -- cmd /c npx -y @playwright/mcp@latest)",
+      "Bash(claude mcp list:*)",
+      "Bash(claude mcp remove:*)",
+      "Bash(claude mcp add:*)",
+      "WebFetch(domain:whitneyworldtravel.com)",
+      "WebFetch(domain:www.instagram.com)",
+      "Bash(curl:*)",
+      "Bash(identify:*)",
+      "Bash(convert:*)",
+      "Bash(ls:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
