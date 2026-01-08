@@ -525,6 +525,94 @@
 }
 
 /* ========================================
+   ABOUT PAGE
+   ======================================== */
+
+.about-page {
+    padding: var(--spacing-2xl) 0;
+    min-height: 70vh;
+}
+
+.about-card {
+    margin-top: var(--spacing-xl);
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xl);
+}
+
+.profile-image-container {
+    text-align: center;
+}
+
+.profile-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: var(--shadow-lg);
+    border: 5px solid var(--peach);
+}
+
+.about-text {
+    width: 100%;
+}
+
+.about-text h2 {
+    color: var(--warm-brown);
+    margin-bottom: var(--spacing-md);
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+}
+
+.about-text h3 {
+    color: var(--warm-brown);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+}
+
+.about-text p {
+    color: var(--gray-700);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-md);
+}
+
+.about-cta {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
+    flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+    .about-content {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .profile-image-container {
+        flex-shrink: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-page {
+        padding: var(--spacing-lg) 0;
+    }
+
+    .about-cta {
+        flex-direction: column;
+    }
+
+    .about-cta .btn {
+        width: 100%;
+    }
+}
+
+/* ========================================
    RESPONSIVE UTILITIES
    ======================================== */
 
