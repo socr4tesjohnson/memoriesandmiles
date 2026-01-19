@@ -235,6 +235,34 @@
     display: block;
 }
 
+/* Form Error Banner */
+.form-error-banner {
+    background: #FEE2E2;
+    border: 1px solid #EF4444;
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    color: #991B1B;
+}
+
+.form-error-banner p {
+    margin-bottom: var(--spacing-xs);
+}
+
+.form-error-banner p:last-child {
+    margin-bottom: 0;
+}
+
+.form-error-banner a {
+    color: #991B1B;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.form-error-banner a:hover {
+    color: #7F1D1D;
+}
+
 /* ========================================
    FOOTER
    ======================================== */

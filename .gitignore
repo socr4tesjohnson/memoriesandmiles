@@ -2,3 +2,6 @@ bin/
 obj/
 publish/
 *.png
+
+# Auto Claude data directory
+.auto-claude/

@@ -1,12 +1,16 @@
 /**
  * Quote Wizard Logic
  * Multi-step form with conditional questions based on trip type
+ *
+ * SECURITY NOTE: The Web3Forms API key below should have domain restrictions
+ * enabled in the Web3Forms dashboard to prevent unauthorized use.
+ * Go to https://web3forms.com/ and enable domain restriction for your GitHub Pages domain.
  */
 
 // State
 let currentStep = 1;
 let tripType = null;
-const totalSteps = 4;
+const totalSteps = 3;
 
 // DOM Elements
 const form = document.getElementById('quote-wizard');
@@ -132,12 +136,24 @@ function validateStep(step) {
     if (step === 1) {
         // Validate trip type selection
         if (!tripType) {
-            alert('Please select a trip type to continue.');
+            // Show inline message instead of alert
+            const tripTypeGrid = document.querySelector('.trip-type-grid');
+            let errorMsg = tripTypeGrid?.previousElementSibling;
+            if (!errorMsg?.classList.contains('step-error')) {
+                errorMsg = document.createElement('p');
+                errorMsg.className = 'step-error';
+                errorMsg.setAttribute('role', 'alert');
+                errorMsg.style.color = 'var(--warm-orange)';
+                errorMsg.style.fontWeight = '600';
+                errorMsg.style.marginBottom = '1rem';
+                tripTypeGrid?.parentNode.insertBefore(errorMsg, tripTypeGrid);
+            }
+            errorMsg.textContent = 'Please select a trip type to continue.';
             return false;
         }
     }
 
-    if (step === 4) {
+    if (step === 3) {
         // Validate contact info
         const firstName = document.getElementById('contact-firstname').value.trim();
         const lastName = document.getElementById('contact-lastname').value.trim();
@@ -460,16 +476,34 @@ async function handleSubmit(e) {
             throw new Error('Submission failed');
         }
     } catch (error) {
-        // Show error message
-        alert('There was an error sending your quote request. Please try again or email us directly at laura@whitneyworldtravel.com');
+        console.error('Quote submission error:', error);
+
+        // Remove any existing error banner
+        const existingError = document.querySelector('.form-error-banner');
+        if (existingError) existingError.remove();
+
+        // Create error banner (no alert())
+        const errorBanner = document.createElement('div');
+        errorBanner.className = 'form-error-banner';
+        errorBanner.setAttribute('role', 'alert');
+        errorBanner.innerHTML = `
+            <p><strong>Oops!</strong> We couldn't send your quote request.</p>
+            <p>Please try again or email us directly at <a href="mailto:laura@whitneyworldtravel.com">laura@whitneyworldtravel.com</a></p>
+        `;
+
+        const wizardCard = document.querySelector('.wizard-card');
+        if (wizardCard) {
+            wizardCard.insertBefore(errorBanner, wizardCard.firstChild);
+        }
+
         submitBtn.textContent = 'Request Quote';
         submitBtn.disabled = false;
     }
 }
 
-// Email validation
+// Email validation - requires 2+ character TLD
 function validateEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
 }
 
 // Show error message

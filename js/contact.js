@@ -1,13 +1,17 @@
 /**
- * Contact Form Validation and Mailto Integration
- * Handles form validation and email client launch
+ * Contact Form Validation and Submission
+ * Handles form validation and Web3Forms submission
+ *
+ * SECURITY NOTE: The Web3Forms API key below should have domain restrictions
+ * enabled in the Web3Forms dashboard to prevent unauthorized use.
+ * Go to https://web3forms.com/ and enable domain restriction for your GitHub Pages domain.
  */
 
 const contactForm = document.getElementById('contact-form');
 
-// Email validation regex
+// Email validation regex - requires 2+ character TLD
 const validateEmail = (email) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
 };
 
 // Show error message
@@ -77,10 +81,16 @@ contactForm?.addEventListener('submit', async (e) => {
     } else if (message.length < 10) {
         showError('message', 'Message must be at least 10 characters');
         isValid = false;
+    } else if (message.length > 5000) {
+        showError('message', 'Message must be less than 5,000 characters');
+        isValid = false;
     }
 
     // If validation fails, stop here
     if (!isValid) return;
+
+    // Get optional phone
+    const phone = formData.get('phone')?.trim();
 
     // Prepare form data for Web3Forms
     const submitData = new FormData();
@@ -89,6 +99,9 @@ contactForm?.addEventListener('submit', async (e) => {
     submitData.append('from_name', name);
     submitData.append('email', email);
     submitData.append('message', message);
+    if (phone) {
+        submitData.append('phone', phone);
+    }
 
     // Show loading state
     const submitButton = contactForm.querySelector('button[type="submit"]');
@@ -106,21 +119,40 @@ contactForm?.addEventListener('submit', async (e) => {
         const result = await response.json();
 
         if (result.success) {
-            // Show success message
-            contactForm.innerHTML = `
+            // Show success message (XSS-safe: use textContent for user input)
+            const successDiv = document.createElement('div');
+            successDiv.className = 'form-success';
+            successDiv.innerHTML = `
                 <div style="text-align: center; padding: 2rem;">
                     <div style="font-size: 4rem; margin-bottom: 1rem;">✅</div>
                     <h3>Message Sent Successfully!</h3>
-                    <p>Thank you for contacting us! We'll get back to you within 24 hours at <strong>${email}</strong></p>
+                    <p>Thank you for contacting us! We'll get back to you within 24 hours at <strong class="user-email"></strong></p>
                     <a href="contact.html" class="btn btn-secondary" style="margin-top: 1rem;">Send Another Message</a>
                 </div>
             `;
+            // Safely insert email using textContent (prevents XSS)
+            successDiv.querySelector('.user-email').textContent = email;
+            contactForm.replaceWith(successDiv);
         } else {
             throw new Error('Submission failed');
         }
     } catch (error) {
-        // Show error message
-        alert('There was an error sending your message. Please try again or email us directly at laura@whitneyworldtravel.com');
+        console.error('Form submission error:', error);
+
+        // Remove any existing error banner
+        const existingError = document.querySelector('.form-error-banner');
+        if (existingError) existingError.remove();
+
+        // Create error banner (no alert())
+        const errorBanner = document.createElement('div');
+        errorBanner.className = 'form-error-banner';
+        errorBanner.setAttribute('role', 'alert');
+        errorBanner.innerHTML = `
+            <p><strong>Oops!</strong> We couldn't send your message.</p>
+            <p>Please try again or email us directly at <a href="mailto:laura@whitneyworldtravel.com">laura@whitneyworldtravel.com</a></p>
+        `;
+        contactForm.insertBefore(errorBanner, contactForm.firstChild);
+
         submitButton.textContent = originalButtonText;
         submitButton.disabled = false;
     }
