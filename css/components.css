@@ -267,48 +267,105 @@
    FOOTER
    ======================================== */
 
-.footer {
-    background: var(--warm-brown);
-    color: var(--cream);
-    padding: var(--spacing-xl) 0;
-    text-align: center;
+/* Enhanced Footer */
+.site-footer {
+    background: linear-gradient(135deg, var(--warm-brown) 0%, #8B6340 100%);
+    color: white;
+    padding: 3rem 0 1rem;
     margin-top: var(--spacing-2xl);
 }
 
 .footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--spacing-md);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-brand h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-links h4,
+.footer-contact h4,
+.footer-social h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a,
+.footer-contact a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.footer-cta {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    margin-top: 2rem;
+}
+
+.footer-cta p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.875rem;
+    opacity: 0.7;
+}
+
+.response-time {
+    font-size: 0.875rem;
+    opacity: 0.8;
+    font-style: italic;
 }
 
 .social-links {
     display: flex;
     gap: var(--spacing-md);
-    justify-content: center;
+    justify-content: flex-start;
 }
 
-.social-link {
+.social-links a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 40px;
     height: 40px;
-    background: var(--white);
-    color: var(--warm-brown);
+    background: rgba(255,255,255,0.1);
+    color: white;
     border-radius: 50%;
     text-decoration: none;
-    font-size: 1.25rem;
     transition: var(--transition-base);
 }
 
-.social-link:hover {
-    background: var(--warm-orange);
-    color: var(--white);
+.social-links a:hover {
+    background: rgba(255,255,255,0.2);
     transform: translateY(-3px);
-}
-
-.footer p {
-    margin-bottom: 0;
-    opacity: 0.9;
 }
